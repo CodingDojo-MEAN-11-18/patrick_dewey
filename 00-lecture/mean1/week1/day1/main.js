@@ -61,13 +61,13 @@ if (array.push('another string') > 10){
 // }
 
 // function construction
-function sayHello(name) {
-    var hello = 'hello';
-    console.log(hello +' '+ name); 
-    // interpolation 
-    console.log(`${hello} ${name}`);
-    return hello;
+// function sayHello(name) {
+//     var hello = 'hello';
+//     console.log(hello +' '+ name); 
+//     // interpolation 
+//     console.log(`${hello} ${name}`);
+//     return hello;
 
 
-}
-console.log(sayHello('Patrick'));
+// }
+// console.log(sayHello('Patrick'));
