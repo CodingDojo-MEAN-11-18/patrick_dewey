@@ -18,10 +18,12 @@
         $.get("https://api.github.com/users/PatrickDewey", function(data){
         // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
         displayName = data.login;
-        console.log(displayName);
+        document.getElementById("name").innerHTML= displayName;
         });
     });
+
     
 </script>
+    <h1 id="name"></h1>
 </body>
 </html>
