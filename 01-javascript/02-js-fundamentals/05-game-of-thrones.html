@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="./css/got.css">
+</head>
+<body>
+   <div class="container">
+
+        <section class="house1">
+            <button type="button" id="17">Baratheon</button>
+        </section>
+        <section class="house2" >
+            <button type="button"id="229">Lannister</button>
+        </section>
+        <section class="house3">
+            <button type="button"id="362">Stark</button>
+        </section>
+        <section class="house4">
+            <button type="button"id="378">Targaryen</button>
+        </section>
+    
+        <main id="house-info">
+            <h1>House Details:</h1>
+            <div class="info">
+
+            </div>
+        </main>
+   </div>
+   <script type="text/javascript">
+   $("button").click(function(){
+    // let houses = ["17","229","362","378"] 
+    gotapi = "https://anapioficeandfire.com/api/houses/"+ $(this).attr('id');
+    $.get(gotapi, function(data){
+        console.log(data);
+        console.log(data.name);
+        let name = `<h3>Name: ${data.name}</h3>`;
+        let words = `<h3>Words: ${data.words}</h3>`;
+        let titles = `<h3>Titles: ${data.titles}</h3>`;
+        $(".info").append(name,words,titles);
+    });
+    
+    });
+    // name
+    // words
+    // titles
+
+    // Baratheon = 17
+    // Lannister = 229
+    // Stark = 362
+    // Targaryen = 378
+    // for(let index in houses){
+    // gotapi = "https://anapioficeandfire.com/api/houses/";
+    // $.get(gotapi+houses[index], function(data){
+    //     console.log(data)
+    // });
+    // };
+   
+   </script>
+   
+</body>
+</html>
