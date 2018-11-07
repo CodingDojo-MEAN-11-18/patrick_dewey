@@ -12,19 +12,20 @@
 </head>
 <body>
    <div class="container">
-
-        <section class="house1">
-            <button type="button" id="17">Baratheon</button>
-        </section>
-        <section class="house2" >
-            <button type="button"id="229">Lannister</button>
-        </section>
-        <section class="house3">
-            <button type="button"id="362">Stark</button>
-        </section>
-        <section class="house4">
-            <button type="button"id="378">Targaryen</button>
-        </section>
+        <div class="box">
+            <section class="house1">
+                <button type="button" id="17">Baratheon</button>
+            </section>
+            <section class="house2" >
+                <button type="button"id="229">Lannister</button>
+            </section>
+            <section class="house3">
+                <button type="button"id="362">Stark</button>
+            </section>
+            <section class="house4">
+                <button type="button"id="378">Targaryen</button>
+            </section>
+        </div>
     
         <main id="house-info">
             <h1>House Details:</h1>
@@ -40,10 +41,12 @@
     $.get(gotapi, function(data){
         console.log(data);
         console.log(data.name);
-        let name = `<h3>Name: ${data.name}</h3>`;
-        let words = `<h3>Words: ${data.words}</h3>`;
-        let titles = `<h3>Titles: ${data.titles}</h3>`;
-        $(".info").append(name,words,titles);
+        const name = `<h3>Name: ${data.name}</h3>`;
+        const words = `<h3>Words: ${data.words}</h3>`;
+        const titles = `<h3>Titles: ${data.titles}</h3>`;
+        console.log($("info"))
+        // empty method clears info div before appending data
+        $(".info").empty().append(name,words,titles);
     });
     
     });
