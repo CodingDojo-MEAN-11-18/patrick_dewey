@@ -1,20 +1,20 @@
 class Card {
     constructor(){
         this.deck = [];
-    };
+    }
 
     resetDeck() {
         this.deck = []
         const suits = [`Clubs`,`Hearts`,`Diamonds`,`Spades`];
-        const cards = [`Ace`,2,3,4,5,6,7,8,9,10,`Jack`,`Queen`,`King`]
+        const cards = [`Ace`,2,3,4,5,6,7,8,9,10,`Jack`,`Queen`,`King`];
+
         for (const suit of suits){
             for (const card of cards){
                 this.deck.push(`${card} of ${suit}`);
-            };
-        };
-        console.log(this.deck)
+            }
+        }
         return this;
-    };
+    }
 
     shuffleDeck(){
         let m = this.deck.length, t, i;
@@ -29,28 +29,25 @@ class Card {
             t = this.deck[m];
             this.deck[m] = this.deck[i];
             this.deck[i] = t;
-        };
-
-        console.log(this.deck)
+        }
         return this;
-    };
+    }
 
-    dealCards(){
-       return this.deck.pop();
-    };
+    deal() {
+        return this.deck.pop();
+        
+    }
 
-};
+}
 
-class Player{
-    constructor(name){
+class Player {
+    constructor(name) {
         this.name = name;
         this.hand = [];
     }
-    getHand(deck){
-        for (let i =0; i < 5; i++){
-            this.hand.push(deck.dealCards())
-            return this
-        };
+    getCard(deck){
+        this.hand.push(deck.deal())
+        return this;
     };
     discardCard(){
         this.hand.pop();
@@ -59,7 +56,12 @@ class Player{
 
 }
 
-const deck = new Card;
-deck.resetDeck()
+const deck1 = new Card();
+deck1.resetDeck().shuffleDeck()
+console.log(deck1)
+deck1.deal()
+console.log(deck1.deal())
+
 const player = new Player("Patrick")
-player.getHand()
+player.getCard(deck1).getCard(deck1).getCard(deck1)
+console.log(player)
