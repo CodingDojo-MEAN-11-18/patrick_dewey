@@ -20,7 +20,15 @@ function Ninja(name){
             console.log("Name:"+this.name+",Health:"+this.health+",Speed:"+speed+",Strength:"+strength);
             return this;
         };
+        this.kick = function(ninja){
+            const damage = strength * 15;
+            ninja.health -= damage;
+            console.log(ninja.name+" was kicked by "+ this.name + " and lost "+damage+" health!");
+            return this;
+        }
+        
     };
+
     Ninja.prototype.sayName = function(){
         console.log("My name is "+this.name)
         return this;
@@ -32,7 +40,9 @@ function Ninja(name){
     };
 
     const ninja1 = new Ninja("Kayabusa");
-    ninja1.showNinja();
-    ninja1.drinkSake();
-    ninja1.showNinja();
+    const ninja2 = new Ninja("Tayak");
+    // ninja1.showNinja();
+    // ninja1.drinkSake();
+    // ninja1.showNinja();
+    ninja1.kick(ninja2)
 
