@@ -50,5 +50,5 @@ function Ninja(name){
     // ninja1.showNinja();
     // ninja1.drinkSake();
     // ninja1.showNinja();
-    ninja1.kick(ninja2)
+    ninja2.punch(ninja1)
 
