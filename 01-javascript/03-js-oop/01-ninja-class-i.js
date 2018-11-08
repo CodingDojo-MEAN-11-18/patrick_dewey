@@ -10,15 +10,29 @@
 // showStats() - This should show the Ninja's name, strength, speed, and health.
 // drinkSake() - This should add +10 Health to the Ninja
 
-function Ninja(name, health){
-    let speed = 3;
-    let strength =3;
-    this.name = name;
-    this.health = health;
+function Ninja(name){
+        let speed = 3;
+        let strength =3;
+        this.name = name;
+        this.health = 100;
 
-    function speedFunction(){
-        return speed;
-
+        this.showNinja = function(){
+            console.log("Name:"+this.name+",Health:"+this.health+",Speed:"+speed+",Strength:"+strength);
+            return this;
+        };
+    };
+    Ninja.prototype.sayName = function(){
+        console.log("My name is "+this.name)
+        return this;
     };
 
-}
+    Ninja.prototype.drinkSake = function(){
+        this.health += 10;
+        return this;
+    };
+
+    const ninja1 = new Ninja("Kayabusa");
+    ninja1.showNinja();
+    ninja1.drinkSake();
+    ninja1.showNinja();
+
