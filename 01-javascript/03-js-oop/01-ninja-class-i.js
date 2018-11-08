@@ -26,6 +26,12 @@ function Ninja(name){
             console.log(ninja.name+" was kicked by "+ this.name + " and lost "+damage+" health!");
             return this;
         }
+        this.punch = function(ninja){
+            const damage = strength *5;
+            ninja.health -= damage;
+            console.log(ninja.name+" was punched by "+ this.name + " and lost "+damage+" health!");
+            return this;
+        }
         
     };
 
