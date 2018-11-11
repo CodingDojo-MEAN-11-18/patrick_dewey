@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Events</title>
+</head>
+<body>
+    <button id="someButton">This is some button</button>
+    <script>
+        var button = document.getElementById("someButton");
+        button.addEventListener("click", whatToDoOnClick);
+        function whatToDoOnClick() {
+            alert("you did it!")
+        }
+        (function () {
+            console.log("I'm an immediate function!");
+        }());
+    </script>
+    
+</body>
+</html>
