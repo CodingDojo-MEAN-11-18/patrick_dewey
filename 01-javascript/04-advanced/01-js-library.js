@@ -52,4 +52,4 @@ const _ = {
   console.log(_.find(array, function callback(x) { return x === 15; }));
   // note: we used named functions for clarity above, but we can also pass anonymous functions as the second parameter:
   console.log(_.filter(array, function(x) { return x > 20; }));
-  
+  // small change
