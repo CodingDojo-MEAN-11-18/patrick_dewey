@@ -35,65 +35,58 @@ var server = http.createServer(function(request, response) {
          response.end();
         });
     }
-    else if(request.url === '/images/pizza.jpg'){
+    
+    else if(request.url === './views/images/cars/car1'){
         // notice we won't include the utf8 encoding
-        fs.readFile('./images/pizza.jpg', function(errors, contents){
-            response.writeHead(200, {'Content-type': 'image/jpg'});
-            response.write(contents);
-            response.end();
-        });
-    }
-    else if(request.url === '/images/cars/car1'){
-        // notice we won't include the utf8 encoding
-        fs.readFile('./images/cars/car1.jpg', function(errors, contents){
+        fs.readFile('./views/images/cars/car1.jpg', function(errors, contents){
             response.writeHead(200, {'Content-type': 'image/jpg'});
             response.write(contents);
             response.end();
         })
     }
-    else if(request.url === '/images/cars/car2'){
+    else if(request.url === './views/images/cars/car2'){
         // notice we won't include the utf8 encoding
-        fs.readFile('./images/cars/car2.jpg', function(errors, contents){
+        fs.readFile('./views/images/cars/car2.jpg', function(errors, contents){
             response.writeHead(200, {'Content-type': 'image/jpg'});
             response.write(contents);
             response.end();
         })
     }
-    else if(request.url === '/images/cars/car3'){
+    else if(request.url === './views/images/cars/car3'){
         // notice we won't include the utf8 encoding
-        fs.readFile('./images/cars/car3.jpg', function(errors, contents){
+        fs.readFile('./views/images/cars/car3.jpg', function(errors, contents){
             response.writeHead(200, {'Content-type': 'image/jpg'});
             response.write(contents);
             response.end();
         })
     }
-    else if(request.url === '/images/cars/car4'){
+    else if(request.url === './views/images/cars/car4'){
         // notice we won't include the utf8 encoding
-        fs.readFile('./images/cars/car4.jpg', function(errors, contents){
+        fs.readFile('./views/images/cars/car4.jpg', function(errors, contents){
             response.writeHead(200, {'Content-type': 'image/jpg'});
             response.write(contents);
             response.end();
         })
     }
-    else if(request.url === '/images/dogs'){
+    else if(request.url === './views/images/dogs'){
         // notice we won't include the utf8 encoding
-        fs.readFile('./images/dogs/dog1.jpg', function(errors, contents){
+        fs.readFile('./views/images/dogs/dog1.jpg', function(errors, contents){
             response.writeHead(200, {'Content-type': 'image/jpg'});
             response.write(contents);
             response.end();
         })
     }
-    else if(request.url === '/images/dogs'){
+    else if(request.url === './views/images/dogs'){
         // notice we won't include the utf8 encoding
-        fs.readFile('./images/dogs/dog2.jpg', function(errors, contents){
+        fs.readFile('./views/images/dogs/dog2.jpg', function(errors, contents){
             response.writeHead(200, {'Content-type': 'image/jpg'});
             response.write(contents);
             response.end();
         })
     }
-    else if(request.url === '/images/dogs'){
+    else if(request.url === './views/images/dogs'){
         // notice we won't include the utf8 encoding
-        fs.readFile('./images/dogs/dog3.jpg', function(errors, contents){
+        fs.readFile('./views/images/dogs/dog3.jpg', function(errors, contents){
             response.writeHead(200, {'Content-type': 'image/jpg'});
             response.write(contents);
             response.end();
