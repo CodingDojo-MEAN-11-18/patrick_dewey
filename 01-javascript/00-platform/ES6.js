@@ -31,14 +31,14 @@ const circle1 = new Circle(33,33,33);
 console.log(circle1);
 circle1.childFunction()
 
-// const dot1 = new Dot(10,10);
-// console.log("x="+dot1.x+",y="+dot1.y);
-// Dot.prototype.showLocation = function(){
-//     console.log("This Dot is at x "+ this.x+" and y "+ this.y);
-// };
-// const dot1 = new Dot(30,38);
-// const dot2 = new Dot(56,78);
-// dot1.showLocation();
-// dot2.showLocation();
-// Dot.getHelp(0)
+const dot1 = new Dot(10,10);
+console.log("x="+dot1.x+",y="+dot1.y);
+Dot.prototype.showLocation = function(){
+    console.log("This Dot is at x "+ this.x+" and y "+ this.y);
+};
+const dot1 = new Dot(30,38);
+const dot2 = new Dot(56,78);
+dot1.showLocation();
+dot2.showLocation();
+Dot.getHelp(0)
 circle1.showLocation()

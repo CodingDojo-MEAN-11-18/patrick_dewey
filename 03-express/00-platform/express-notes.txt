@@ -1,0 +1,5 @@
+1. npm init:
+    go through instructions setting up
+    adds packag.json
+2. npm i express:
+    installs express to folder adds node_modules folder
