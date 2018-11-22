@@ -1,0 +1,42 @@
+
+
+.pictures {
+    width:300px;
+    height:300px;
+    border: 5px black solid;
+    
+}
+
+
+
+
+#pic1 {
+    background: url(../images/dogs/dog1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+#pic2 {
+    background: url(../images/dogs/dog2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+#pic3 {
+    background: url(../images/dogs/dog3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+#pic4 {
+    background: url(../images/dogs/dog4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.white {
+    background: url(../images/dogs/dog1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}

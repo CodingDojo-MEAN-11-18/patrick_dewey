@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cars</title>
+    <% include ./partials/head %>
+</head>
+<body>
+    <header>
+        <%include ./partials/header %>
+    </header>
+    <div class="container-fluid bg-dark">
+        <h1 class="text-center text-white">Meet Buddy</h1>
+        <div class="row">
+            <div class="col-sm">
+            <img src="../images/dogs/dog1.jpg" class="circle mx-auto d-block" alt="logo">
+            </div>
+        </div>
+        <div class="row bg-dark">
+            <p class="text-light bg-dark">Favorite Food: Spaghetti</p>
+            
+        </div>
+        <div class="row bg-dark text-white">
+            <p>Age: 3</p>
+        </div>
+        <div class="row bg-dark text-white">
+            <h5>Sleeping Spots:</h5>
+            <ul>
+                <li>under the bed</li>
+                <li>in a sunbeam</li>
+            </ul>
+        </div>
+
+    </div>
+    <footer class="bg-dark"> 
+        <% include ./partials/footer %>
+    </footer>
+</body>
+</html>

@@ -10,7 +10,6 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(parser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '/static')));
-app.use(express.static(path.join(__dirname, '/images')));
 
 
 app.get('/', function(req, res) {
