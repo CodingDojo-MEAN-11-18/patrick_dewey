@@ -31,9 +31,23 @@ app.get('/', (req, res) => {
     res.render('index', {counter: increment(req)});
 });
 
+app.post('/two', (req,res) => {
+    increment(req);
+
+    res.redirect('/');
+})
+
+app.post('/reset', (req,res) => {
+    req.session.destroy();
+
+    res.redirect('/')
+})
 function increment(req) {
     return req.session.counter = req.session.counter ? req.session.counter + 1: 1;
 }
 
 
-app.listen(port)
+
+
+
+app.listen(port, console.log(`Listening on port ${port}`))
