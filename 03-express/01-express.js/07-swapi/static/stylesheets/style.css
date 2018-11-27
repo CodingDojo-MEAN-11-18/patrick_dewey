@@ -1,0 +1,35 @@
+.head {
+    text-align: center;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+.buttons {
+    padding:150px;
+    text
+}
+
+#people {
+    display: inline-block;
+}
+
+#planets {
+    float: right;
+}
+
+.data {
+    border: 2px solid black;
+    width: 300px;
+    height: 400px;
+}
+
+.wrapper {
+    padding:20px;
+}
+
+.links {
+    text-align: center;
+    text-decoration: underline;
+}
