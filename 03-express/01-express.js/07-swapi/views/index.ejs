@@ -7,6 +7,7 @@
     <title>SWAPI</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="container-fluid wrapper">
@@ -14,20 +15,16 @@
         <h3 class="head">What would you like to know more about?</h3>
     
         <div class="container buttons">
-            <form id="people" action="/people" method="get">
-                <button class="btn-primary"type="submit">People</button>
-            </form>
-            <form id="planets"action="/planets" method="get">
-                <button class="btn-primary"type="submit">Planets</button>
-            </form>
+                <button id="peoplebtn" class="btn-primary"type="submit">People</button>
+                <button id="planetbtn" class="btn-primary"type="submit">Planets</button>
         </div>
         <div class="container data">
-
+            <ul id="content"></ul>
         </div>
         <div class="container links">
-            <a href="http://">Previous 10</a>
-            <a href="http://">Get all 61 planets</a>
-            <a href="http://">Next 10</a>
+            <button id ="previous">Previous 10</button>
+            <button id="all">Get all 61 planets</button>
+            <button id="next">Next 10</button>
         </div>
 
     </div>
@@ -36,8 +33,36 @@
 
         </div>
     </footer>
+    <script>
+    $(document).ready(function() {
+        let page = 1;
+        $('#peoplebtn').click(function() {
+            page = 1;
+            $.get('/people', function(data) {
+                $('#content').empty();
+                const results = data.results;
+                for (const result of results) {
+                    $('#content').append(`<li>${result.name}</li>`);
+                }
+            }, 'json');
+        });
+        $('#planetbtn').click(function() {
+            page = 1;
+            $.get('/planets', function(data) {
+                $('#content').empty();
+                const results = data.results;
+                for (const result of results) {
+                    $('#content').append(`<li>${result.name}</li>`);
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                }
+            }, 'json')
+        })
+
+        $('')
+    })
+    </script>
+
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>

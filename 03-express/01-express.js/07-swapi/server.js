@@ -2,9 +2,8 @@ const express = require('express');
 const path = require('path');
 const parser = require('body-parser');
 const axios = require('axios');
-const app = express();
-
 const port = process.env.PORT || 8000;
+const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('views'));
@@ -16,15 +15,27 @@ app.get('/', (req,res)=> {
 });
 
 app.get('/people', (req,res) => {
+    info = 'people';
     axios.get('http://swapi.co/api/people/?page=2')
-    .then(data => {
-        console.log(data);
-
-        res.json(data.results);
+    .then(content => {
+        console.log(content.data);
+        res.json(content.data);
     })
     .catch(error => {
         console.log(error);
         res.json(error);
+    })
+});
+
+app.get('/planets', (request,response) => {
+    info = 'planets';
+    axios.get('http://swapi.co/api/planets/')
+    .then(content => {
+        console.log(content.data)
+        response.json(content.data);
+    })
+    .catch(error => {
+        response.json(error);
     })
 });
 

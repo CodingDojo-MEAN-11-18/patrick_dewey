@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script>
+        $(document).ready(function() {
+            let socket = io.connect();
+
+            $('#data_form').submit(function(event) {
+                event.preventDefault();
+                socket.emit('posting_form', {
+                    name: $('#name').val() 
+                });
+            });
+            socket.on('updated_message', function(data) {
+                console.log(data.response);
+                $('#message').text("You emitted this info" + JSON.stringify(data.response));
+
+            });
+            socket.on('random', function(data) {
+                $('#number').text(`Your luck number is ${data.response}`)
+            });
+        });
+    
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <p id="message"></p>
+        <p id="number"></p>
+        <main>
+            <form id="data_form">
+                <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input class="form-control" type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                <label for="location">Dojo Location:</label>
+                <select name="location" class="selector form-control">
+                    <option value="los angeles">Los Angeles</option>
+                    <option value="online">Online</option>
+                    <option value="san fran">San Francisco</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <label for="language">Favorite Language</label>
+                <select name="language" class="form-control selector">
+                    <option value="js">Javascript</option>
+                    <option value="python">Python</option>
+                    <option value="css">CSS</option>
+                    <option value="c">C</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <label for="textarea">Comment (optional):</label>
+                <textarea name="textarea" class="form-control" id="textarea" cols="30" rows="10"></textarea>
+                </div>
+                <button class="btn-primary" type="submit">Submit</button>
+            </form>
+        </main>
+    </div>
+
+</body>
+</html>
