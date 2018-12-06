@@ -16,16 +16,18 @@ const mongoose = require('mongoose');
 // our db in mongodb --this should math the name of the db you are going to use for your project
 mongoose.connect('mongodb://localhost/test_project_db', { useNewUrlParser: true });
 // Setting our Views Folder Directory
-// Require global JS Promises to handle Mongoose promises
-
 app.set('views', path.join(__dirname, './views'));
 // Setting our View Engine to EJS
 app.set('view engine', 'ejs');
+// set up other middleware such as session
+const flash = require('express-flash');
+app.use(flash());
+
 // Database
 const UserSchema= new mongoose.Schema({
-    name: { type: String, required: true },
-    age: Number
-});
+    name: { type: String, required: true, minlength: 6 },
+    age: {type: Number, required: true, min:1, max: 130}
+}, {timestamps: true});
 // Set Schema in our Models as "User"
 mongoose.model('User', UserSchema);
 // Retrieve this Schema from our Models, name "User"
@@ -40,12 +42,11 @@ app.get('/', function(req,res) {
     // Keep in mind that everything you want to do AFTER you get the users from the database must
     // happen inside of this callback for it to be synchronous
     // Make sure you handle the case when there is an error, as well as the case when there is no error
-    if(err) {
-        console.log('Something went wrong');
-
-    } else {
+    try { 
         console.log(users);
         res.render('index', {user_data: users});
+    } catch(err) {
+        next(err);
     }
 });
 });
@@ -61,7 +62,12 @@ app.post('/users', function(req, res, next) {
         console.log('Successfully saved user instance');
         res.redirect('/');
     } catch (err) {
-        next(err);
+        console.log('we have an error',err);
+        for(var key in err.errors){
+            req.flash('registration', err.errors[key])
+
+        }
+        res.redirect('/')
     }
 });
 // 

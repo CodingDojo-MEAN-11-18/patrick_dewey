@@ -1,5 +1,5 @@
 {
-  "name": "test_project",
+  "name": "01-quoting-dojo",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -10,13 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-flash": "0.0.2",
     "express-session": "^1.15.6",
-    "install": "^0.12.2",
     "mongoose": "^5.3.14"
   }
 }
