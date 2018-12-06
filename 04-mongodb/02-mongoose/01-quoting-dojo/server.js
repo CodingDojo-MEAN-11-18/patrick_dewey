@@ -1,5 +1,9 @@
 // Require Express
 const express = require('express');
+// Require Session
+const session = require('express-session');
+// Require Flash
+const flash = require('express-flash');
 // Create App
 const app = express();
 // Require body-parser 
@@ -14,10 +18,15 @@ app.use(express.static(path.join(__dirname, './static')));
 app.set('views', path.join(__dirname, './views'));
 // Set our view engine to ejs
 app.set('view engine', 'ejs');
-// require session
-const session = require('express-session');
-// set up flash
-const flash = require('express-flash');
+
+app.use(session({
+    cookie: {maxAge: 60000},
+    saveUninitialized: true,
+    resave: 'true',
+    secret: 'secret'
+}));
+app.use(flash())
+
 
 // connect mongoose
 const mongoose = require('mongoose')
@@ -29,22 +38,27 @@ app.get('/', (req,res) => {
     res.render('index')
 })
 
-app.post('/user', (req,res,next) => {
-    console.log('POST DATA', req.body)
+app.post('/user', (req,res) => {
     const data = new User({name: req.body.name, quote: req.body.quote})
-    try {
-        data.save();
-        console.log('Successfully saved user');
-        res.redirect('/');
-    } catch (err) {
-        next(err);
-    }
+    data.save(function(err) {
+        if(err){
+            console.log("We have an error!")
+
+            for(var key in err.errors){
+                req.flash('registration', err.errors[key].message);
+            }
+            res.redirect('/');
+        }
+        else {
+            res.redirect('/user')
+        }
+
+    })
 });
 
 app.get('/quotes', function(req,res,) {
     User.find({}, function(err, users) {
         try {
-            console.log(users)
             res.render('quotes', {user_data: users})
         } catch(err) {
             next(err);
