@@ -18,6 +18,7 @@ app.set('view engine', 'ejs');
 
 // Connect mongoose to mongodb
 mongoose.connect('mongodb://localhost/message_board', { useNewUrlParser: true});
+mongoose.connection.on('connected', () => console.log('Mongo connected'));
 // Models
 const CommentSchema = new mongoose.Schema({
     name: {type: String, required: [true, "Posts must contain a name"]},
@@ -92,4 +93,4 @@ app.post('/add_comment/:id', function(req, res) {
 
 
 // Listen
-app.listen(port, ()=>console.log(`Express app running on Port: ${port}`));
+app.listen(3000, ()=>console.log(`Express app running on Port: ${port}`));

@@ -15,6 +15,7 @@ const mongoose = require('mongoose');
 // This is how we connect to the mongod database server using mongoose -- "basic_mongoose" is the name of
 // our db in mongodb --this should math the name of the db you are going to use for your project
 mongoose.connect('mongodb://localhost/test_project_db', { useNewUrlParser: true });
+mongoose.connection.on('connected', () => console.log('Mongo connected'));
 // Setting our Views Folder Directory
 app.set('views', path.join(__dirname, './views'));
 // Setting our View Engine to EJS
