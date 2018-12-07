@@ -22,20 +22,24 @@
 
         </form>
         <div class="display-post">
-            <h3>Name: Brendon</h3>
-            <h3>Message: The CodingDojo rocks</h3>
+            <% for (let x in post_data) { %>
+                <h3>Name:<%= post_data[x].name %></h3>
+                <h4>Message: "<%= post_data[x].content %>"</h4>
+                <p><%= post_data[x].createdAt %></p>
+                <% for (const comment of post_data[x].comments){%>
+                    <p><%="Name:" + comment.name %></p>
+                    <p><%="Comment:" + comment.content %></p>
+                <% } %>
+                <form id="comment_form" action="/add_comment/<%= post_data[x]._id %>" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="comment_name">
+                    <label for="comment">Comment:</label>
+                    <textarea name="comment" id="post_comment" cols="100" rows="4"></textarea>
+                    <button type="submit">Post Comment</button>
+                </form>
+            <% } %>
         </div>
-        <div class="comments">
-            <p>Name: Jimmy</p>
-            <p>Comment: I agree the CodingDojo is pretty sweel</p>
-        </div>
-        <form id="comment_form" action="/add_comment" method="post">
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="comment_name">
-            <label for="comment">Comment:</label>
-            <textarea name="comment" id="post_comment" cols="70" rows="6"></textarea>
-            <button type="submit">Post Comment</button>
-        </form>
+        
     </div>
 </body>
 </html>

@@ -34,8 +34,58 @@ const Post = mongoose.model('Post', PostSchema);
 
 // Routes
 app.get('/', function(req, res) {
-    res.render('index')
+    Post.find({}, function(err, posts) {
+        if(err) {
+            console.log('There is an Error how do I handle it?')
+        } else {
+            res.render('index', {post_data: posts});
+        }
+    });
+    
+    
 })
+// Handle post or "Message" creation
+app.post('/add_post', function(req, res) {
+    const post = new Post({
+        name: req.body.name,
+        content: req.body.message
+    });
+    post.save(function(err){
+        if(err){
+            console.log('There is an Error')
+            res.redirect('/');
+        } else {
+            console.log('Sucessfully created new Post')
+            res.redirect('/')
+        }
+    })
+})
+//  Handle Comment creation
+app.post('/add_comment/:id', function(req, res) {
+    const postId = req.params.id;
+    Post.findOne({_id: postId}, function(err, post){
+        const comments = new Comment({
+            name: req.body.name,
+            content: req.body.comment
+        });
+        Post.updateOne({_id: postId},{
+            $push: {comments: comments}
+        }, function(err){
+
+        });
+        comments.save(function(err){
+            if (err) {
+                console.log(err);
+            }  else {
+                console.log("comment added");
+                console.log(post)
+                res.redirect('/');
+
+            }
+        })
+    });
+})
+
 
 
 

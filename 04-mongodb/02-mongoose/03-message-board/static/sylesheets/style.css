@@ -5,3 +5,7 @@
 label, input, textarea {
     display: block;
 }
+
+.display-post {
+    padding: 10px;
+}
