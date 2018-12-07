@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Message Board</title>
+    <link rel="stylesheet" href="/sylesheets/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="head-contain">
+            <h1>The Dojo Message Board</h1>
+            <hr>
+        </div>
+        <form id="post-form" action="/add_post" method="post">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="post_name">
+            <label for="message">Message:</label>
+            <textarea name="message" id="post_message" cols="100" rows="8"></textarea>
+            <button type="submit">Post Message</button>
+
+        </form>
+        <div class="display-post">
+            <h3>Name: Brendon</h3>
+            <h3>Message: The CodingDojo rocks</h3>
+        </div>
+        <div class="comments">
+            <p>Name: Jimmy</p>
+            <p>Comment: I agree the CodingDojo is pretty sweel</p>
+        </div>
+        <form id="comment_form" action="/add_comment" method="post">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="comment_name">
+            <label for="comment">Comment:</label>
+            <textarea name="comment" id="post_comment" cols="70" rows="6"></textarea>
+            <button type="submit">Post Comment</button>
+        </form>
+    </div>
+</body>
+</html>
