@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Dog Form</title>
+    <link rel="stylesheet" href="./stylesheets/form.css">
+</head>
+<body>
+    <div class="wrapper">
+        
+        <div class="container-head">
+            <h1>Add Dog to Database</h1>
+        </div>
+        <div class="form-container">
+            <form id="dog-form" action="/add" method="post">
+                <label for="name">Dog's Name:</label>
+                <input type="text" id="name" name="name">
+                <label for="breed">Breed:</label>
+                <input type="text" id="breed" name="breed">
+                <label for="trick">Favorite Trick:</label>
+                <select name="trick" id="trick">
+                    <option value="Rollover">Rollover</option>
+                    <option value="Sit">Sit</option>
+                    <option value="Paw">Paw</option>
+                </select>
+                <label for="age">Age:</label>
+                <input type="text" name="age" id="age">
+                <button type="submit">Add Dog</button>
+
+            </form>
+        </div>
+        <div class="return">
+            <a href="/">Home</a>
+        </div>
+        <div class="bottom-bar">
+
+        </div>
+    </div>
+    
+
+    
+    
+</body>
+</html>

@@ -50,13 +50,16 @@ app.post('/user', (req,res) => {
             res.redirect('/');
         }
         else {
-            res.redirect('/user')
+            console.log('Successfully created user!')
+            res.redirect('/')
         }
 
     })
 });
 
 app.get('/quotes', function(req,res,) {
+    const order = User.find({}).sort("-createdAt")
+    console.log(order)
     User.find({}, function(err, users) {
         try {
             res.render('quotes', {user_data: users})

@@ -22,7 +22,6 @@ app.set('view engine', 'ejs');
 // set up other middleware such as session
 const flash = require('express-flash');
 app.use(flash());
-
 // Database
 const UserSchema= new mongoose.Schema({
     name: { type: String, required: true, minlength: 6 },
@@ -62,12 +61,7 @@ app.post('/users', function(req, res, next) {
         console.log('Successfully saved user instance');
         res.redirect('/');
     } catch (err) {
-        console.log('we have an error',err);
-        for(var key in err.errors){
-            req.flash('registration', err.errors[key])
-
-        }
-        res.redirect('/')
+        next(err);
     }
 });
 // 

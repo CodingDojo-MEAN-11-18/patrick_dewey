@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="info">
+            <h3>Name: <%= dog_data[0].name %></h3>
+            <h3>Breed: <%= dog_data[0].breed %></h3>
+            <h3>Favorite Trick: <%= dog_data[0].trick %></h3>
+            <h3>Age: <%= dog_data[0].age %></h3>
+            <a href="/">Home</a>
+            <a href="/<%=dog_data[0]._id %>/edit">Edit</a>
+            
+        </div>
+    </div>
+</body>
+</html>

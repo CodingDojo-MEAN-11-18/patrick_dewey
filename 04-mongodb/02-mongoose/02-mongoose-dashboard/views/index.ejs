@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="topbar">
+
+        </div>
+
+        <div class="image">
+            <img src="./images/dog.jpg" alt="Dog">
+        </div>
+
+        <div class="container-head">
+            <h2>Dogs Index:</h2>
+        </div>
+
+        <div class="dog-table">
+            <table>
+                <thead>
+                    <h3>Current Dogs in Database:</h3>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Breed</th>
+                    <th>Trick</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <% for (let x of dog_data) {%>
+                        <td><%= x.name %></td>
+                        <td><%= x.breed %></td>
+                        <td><%= x.trick %></td>
+                        <td><%= x.age %></td>
+                        <td><a href="/<%= x._id %>">Show</a> <a href="/<%= x._id %>/edit/">Edit</a> <a href="/<%= x._id %>/delete/">Delete</a> </td>
+                        <tr></tr>
+                    <%}%>
+                    <!-- <td>Spot</td>
+                    <td>Pug</td>
+                    <td>Rollover</td>
+                    <td>8</td> -->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="add-dog">
+            <a href="/new" id="new-dog">Add Dog</a>
+        </div>
+    </div>
+</body>
+</html>
