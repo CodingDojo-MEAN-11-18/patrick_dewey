@@ -11,7 +11,7 @@ const bcrypt = require('bcryptjs');
 // Create Express App
 const app = express();
 // Use Flash Messages
-app.use(flash())
+app.use(flash());
 
 // Use Session
 app.use(session({
@@ -30,11 +30,10 @@ app.set('views', path.join(__dirname,'./views'));
 app.set('view engine', 'ejs');
 
 // Connect mongoose to mongodb
-mongoose.connect('mongodb://localhost/dojo_secrets', { useNewUrlParser: true});
-mongoose.connection.on('connected', () => console.log('Mongo DB Connected'));
-
-// Set up Models
 const { Schema } = mongoose;
+mongoose.connect('mongodb://localhost:27017/secrets', { useNewUrlParser: true});
+mongoose.connection.on('connected', () => console.log('Mongo DB Connected'));
+// Set up Models
 // Comment Schema
 const CommentSchema = new Schema({
     comment: {
@@ -58,7 +57,6 @@ const UserSchema = new Schema({
         type: String,
         required: [true, 'Please provide an email'],
         minlength: 6,
-        maxlength: 20
     },
     first_name: {
         type: String,
@@ -76,7 +74,6 @@ const UserSchema = new Schema({
         type: String,
         required: [true, 'Please provide a name'],
         minlength: 3,
-        maxlength: 15
     },
     birthday: {
         type: String,
@@ -97,20 +94,78 @@ app.get('/', function(req, res) {
 app.post('/register', function(req, res) {
     console.log('creating user...')
     User.find({email: req.body.email})
-        .then( query => {
-            if(query.length === 0 & req.body.password == req.body.password_conf){
-                console.log('email not used')
-                console.log('passwords match')
+    .then((found) => {
+        if (found.length === 0){
+            console.log('email not found')
+            bcrypt.hash(req.body.password, 10)    
+            .then(hashed => {
+                // console.log(hashed)
+                const user = new User({
+                    email: req.body.email,
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    password: hashed,
+                    birthday: req.body.birthday
+                });
+
+                user.save(function(err){
+                    if (err) {
+                        console.log(err)
+                        res.redirect('/')
+                    }
+                    else {
+                        req.session.userID = user._id;
+                        console.log('successfully saved user')
+                        res.redirect('/')
+                    }
+                });
                 
-            }
-        })
-        .catch(console.log('theres an error'))
+            })
+            .catch(error => {
+                console.log(error);
+                
+            })
+        } else {
+            console.log('Email already taken')
+            res.redirect('/')
+        }
+    });
 
-    // res.redirect('/')
+      
+});
+
+app.post('/login', function(req, res) {
+    User.findOne({email: req.body.email})
+    .then(found => {
+        if (found.length === 0) {
+            console.log('Email not in Database');
+            res.redirect('/')
+        } else {
+            userID = found.id;
+            bcrypt.compare(req.body.password,  found.password)
+            .then((boolean) => {
+                if(boolean === true) {
+                    console.log('passwords match!')
+                    res.redirect('/index')
+                } else {
+                    console.log(boolean)
+                    console.log('passwords do not match')
+                    res.redirect('/')
+                }
+            }) .catch(err => {
+                console.log(err)
+                res.redirect('/')
+            })
+        }
+    }) .catch(error => {
+        console.log(error)
+    });
+});
+
+app.get('/index', function(req, res){
+    res.render('index')
 })
-
 app.post('/secret', function(req, res) {
     console.log('creating secret...', req.body)
 })
-
 app.listen(port, () => console.log(`Express Server running on Port ${port}`));
