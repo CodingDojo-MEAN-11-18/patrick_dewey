@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="head-contain">
+            <h2>Dojo Secrets</h2>
+        </div>
+        <div class="border">
+            <h6>Create a secret</h6>
+            <hr>
+            <form action="/secret" method="post">
+                <label for="secret">Secret</label><br>
+                <input type="text" name="secret"><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="show-secrets">
+            <h6 id="secret-title">All the secrets</h6>
+        </div>
+    </div>
+    
+</body>
+</html>
