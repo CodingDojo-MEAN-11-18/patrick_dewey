@@ -6,36 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="wrapper">
-        <div class="registration">
+        <form id="login"action="/login" method="post">
+            <h4>Login:</h6>
+            <label for="email">Email:</label>
+            <input type="text" name="email">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="">
+            <br>
+            <button type="submit">Login</button>
+        </form>
+        <form id="register" action="/register" method="post">
             <h4>Register:</h4>
-            <form action="/register" method="post">
-                <label for="email">Email:</label>
-                <input type="text" name="email">
-                <label for="first_name">First Name:</label>
-                <input type="text" name="first_name">
-                <label for="last_name">Last Name:</label>
-                <input type="text" name="last_name">
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="">
-                <label for="password_conf">Confirm Password:</label>
-                <input type="password" name="password_conf">
-                <label for="Birthday">Date of Birth</label>
-                <input type="date" name="birthday" id="">
-                <button type="submit">Register</button>
-            </form>
-            <h4>Login:</h4>
-            <form action="/login" method="post">
-                <label for="email">Email:</label>
-                <input type="text" name="email">
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="">
-                <button type="submit">Login</button>
-            </form>
-        </div>
-        .
+            <label for="email">Email:</label>
+            <input type="text" name="email">
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name">
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="">
+            <label for="password_conf">Confirm Password:</label>
+            <input type="password" name="password_conf">
+            <label for="Birthday">Date of Birth</label>
+            <input type="date" name="birthday" id="">
+            <br>
+            <button type="submit">Register</button>
+        </form>
+        
+            
+    
     </div>
 </body>
 </html>

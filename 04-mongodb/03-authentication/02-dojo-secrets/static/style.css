@@ -1,0 +1,20 @@
+form {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+}
+body {
+    background: rgb(63, 50, 33);
+    color: white
+}
+
+button {
+    background: rgb(110, 216, 154);
+    color: rgb(7, 12, 8);
+    font-weight: bolder;
+}
+
+input {
+    padding: 10px;
+    font-weight: bolder;
+}
