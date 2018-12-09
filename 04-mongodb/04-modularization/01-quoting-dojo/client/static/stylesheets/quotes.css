@@ -1,0 +1,14 @@
+.wrapper {
+    padding: 10px;
+    border: black 2px solid;
+    border-radius: 10px;
+}
+.title {
+    text-decoration: underline;
+    text-align: center;
+}
+
+p {
+    color: blue;
+    margin-left: 150px;
+}

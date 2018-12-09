@@ -1,0 +1,41 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+.wrapper {
+    border: black 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+.title {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+label {
+    vertical-align: top;
+}
+
+#name {
+    display: block;
+}
+
+#quote {
+    display: block;
+}
+button {
+    vertical-align: bottom;
+    padding: 10px;
+    border-radius: 10px;
+    background: blue;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+}
+a {
+    font-weight: bolder;
+    margin-left: 15px;
+    color: green;
+    font-style: italic;
+}
