@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('User')
+const User = require('../models/user');
 module.exports = function(app){
     app.get('/', (req,res) => {
         res.render('index')

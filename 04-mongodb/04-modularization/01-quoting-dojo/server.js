@@ -32,7 +32,7 @@ app.use(flash());
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/quoting_dojo', { useNewUrlParser: true });
 // Add user.js model
-const User = require('./models/user');
 
-require('./server/config/routes.js', (app));
+
+require('./server/config/routes.js')(app);
 app.listen(8000, () => console.log(`Listening on Port 8000`))
