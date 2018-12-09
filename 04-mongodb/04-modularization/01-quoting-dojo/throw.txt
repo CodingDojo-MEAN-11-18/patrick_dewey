@@ -1,0 +1,5 @@
+<!-- <% if(messages.registration) { %>
+            <% for (var x of messages.registration) { %>
+             <h3><%= x %></h3>
+            <% } %>
+        <% } %> -->
