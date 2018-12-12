@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>New Author</title>
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/authors/new">New Author</a></li>
+        <li><a href="/books">Books</a></li>
+      </ul>
+    </nav>
+    <main>
+      <fieldset>
+      <legend>Create Author</legend>
+      <form action="/authors" method="post">
+        <div><label for="name">Name</label>
+          <input type="text" name="name" id="author_name">
+        </div>
+        <div>
+          <label for="age">Age:</label>
+          <input type="number" name="age" id="author_age">
+        </div>
+        <div>
+          <label for="is ALive">Alive:
+            <input type="radio" name="isAlive" value="true">True
+          <input type="radio" name="isAlive" value="false">False
+          </label>
+        </div>
+        <button type="submit">Create</button>
+      </form>
+      </fieldset>
+
+    </main>
+  </div>
+
+
+</body>
+</html>
